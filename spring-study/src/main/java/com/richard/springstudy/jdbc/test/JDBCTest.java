@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @program: myself_study
@@ -35,6 +37,17 @@ public class JDBCTest
     {
         //写sql语句
         String sql = "insert into employees(last_name,email,salary,dept_id) values(?,?,?,?)";
-        jdbcTemplate.update(sql,"李玉婷","lyting@atguigu");
+        jdbcTemplate.update(sql,"李玉婷","lyting@atguigu",15000,2);
+    }
+
+    //批处理的方法
+    @Test
+    void testBatchUpdate(){
+        String sql = "insert into employees(last_name,email,salary,dept_id) values(?,?,?,?)";
+        List<Object[]> batchArgs = new ArrayList<>();
+        batchArgs.add(new Object[]{"李小璐","lxl@126.com",100000,6});
+        batchArgs.add(new Object[]{"PGOne","pg1@126.com",100000,6});
+        batchArgs.add(new Object[]{"贾乃亮","jnl@126.com",100000,6});
+        jdbcTemplate.batchUpdate(sql,batchArgs);
     }
 }
