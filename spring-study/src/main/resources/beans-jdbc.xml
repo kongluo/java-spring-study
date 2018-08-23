@@ -4,6 +4,8 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- 设置自动扫描的包 -->
+    <context:component-scan base-package="com.richard.springstudy.jdbc"></context:component-scan>
     <!-- 引入外部属性文件 -->
     <context:property-placeholder location="classpath:db.properties"/>
 
