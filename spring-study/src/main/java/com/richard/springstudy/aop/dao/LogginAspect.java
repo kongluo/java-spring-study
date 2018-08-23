@@ -1,6 +1,7 @@
 package com.richard.springstudy.aop.dao;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,5 +15,8 @@ import org.springframework.stereotype.Component;
 @Aspect //声明一个类是切面类
 public class LogginAspect
 {
-
+    @Before(value = "execution(public int com.richard.springstudy.aop.dao.ArithmeticCalculator.*(int,int))")
+    public void beforeLogging(){
+        System.out.println("我在方法执行之前执行...");
+    }
 }
